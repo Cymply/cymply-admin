@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table"
 import {User, userDummyData} from "@/entities/user/model/user-dummy-data";
 import {JSX, ReactNode} from "react";
-import UserTable from "src/features/ui";
+import UserTable from "@/features/ui/UserTable";
 
 export interface UserInfoProps {
 
