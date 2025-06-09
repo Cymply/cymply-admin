@@ -113,9 +113,9 @@ export default function UserTable(props : UserTableProps) {
                 </div>
               )}
             </DialogTitle>
-            <DialogDescription>
-              사용자 상세 정보를 확인할 수 있습니다.
-            </DialogDescription>
+            {/*<DialogDescription>*/}
+            {/*  사용자 상세 정보를 확인할 수 있습니다.*/}
+            {/*</DialogDescription>*/}
           </DialogHeader>
           
           {selectedUser && (
@@ -130,7 +130,7 @@ export default function UserTable(props : UserTableProps) {
                     <span className="font-medium text-gray-600">ID:</span>
                     <span>{selectedUser.id}</span>
                   </div>
-                  <div className="flex justify-between">
+                    <div className="flex justify-between">
                     <span className="font-medium text-gray-600">이메일:</span>
                     <span className="text-sm">{selectedUser.email}</span>
                   </div>
