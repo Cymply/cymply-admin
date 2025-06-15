@@ -1,7 +1,7 @@
-import {AccountWidgets} from "@/widgets/ui";
+import {AccountSettings} from "@/widgets/account/ui";
 
 export default function Profile() {
   return (
-    <AccountWidgets />
+    <AccountSettings />
   )
 }

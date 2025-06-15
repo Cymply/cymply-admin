@@ -13,7 +13,7 @@ const currentUser = {
   provider: "google"
 };
 
-export const AccountWidgets: React.FC = () => {
+export const AccountSettings: React.FC = () => {
   const router = useRouter();
   
   const handleNicknameChange = () => {
