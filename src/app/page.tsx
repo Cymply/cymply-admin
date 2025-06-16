@@ -3,7 +3,7 @@ import { Button } from "../components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col gap-8">
       <p>Hello World</p>
       <Button>test</Button>
     </div>

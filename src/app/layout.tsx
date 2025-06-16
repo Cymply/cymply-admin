@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 
 import { Providers } from "./providers";
-import AdminLayout from "./admin/layout/ui/admin-layout";
+import AdminLayout from "./layouts/admin-layout";
 
 export const metadata: Metadata = {
   title: "Create Next App",

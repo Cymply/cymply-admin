@@ -1,6 +1,6 @@
 "use client";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import ContentLayout from "./content-layout";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AdminSidebar } from "@/widgets/sidebar/ui";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
