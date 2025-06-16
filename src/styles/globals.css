@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
+@import "tw-animate-css";
 
-:root {
-  --content-width: 750px;
-  --header-height: 6rem;
-}
+@custom-variant dark (&:is(.dark *));
 
 * {
   outline: none;
@@ -17,7 +14,6 @@ html,
 body {
   height: 100%;
   margin: 0 auto;
-  max-width: var(--content-width);
   scroll-behavior: smooth;
 }
 
@@ -55,4 +51,39 @@ button {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+@layer base {
+  :root {
+    /* --header-height: 4.75rem; */
+    --background: theme("colors.background");
+    --foreground: theme("colors.foreground");
+    --primary: theme("colors.primary.DEFAULT")
+    --primary-foreground: theme("colors.primary.foreground");
+    --secondary: theme("colors.secondary.DEFAULT");
+    --secondary-foreground: theme("colors.secondary.foreground");
+    --muted: theme("colors.muted.DEFAULT");
+    --muted-foreground: theme("colors.muted.foreground");
+    --accent: theme("colors.accent.DEFAULT");
+    --accent-foreground: theme("colors.accent.foreground");
+    --destructive: theme("colors.destructive.DEFAULT");
+    --destructive-foreground: theme("colors.destructive.foreground");
+    --border: theme("colors.border");
+    --input: theme("colors.input.DEFAULT");
+    --input-bg: theme("colors.input.background");
+    --ring: theme("colors.ring");
+    --radius: 0.5rem;
+    --bg-lnb: theme("colors.bg.lnb");
+    --bg-alert: theme("colors.bg.alert");
+    --bg-pageDark: theme("colors.bg.pageDark");
+    --bg-page: theme("colors.bg.page");
+    --sidebar-background: theme("colors.sidebar.DEFAULT");
+    --sidebar-foreground: theme("colors.sidebar.foreground");
+    --sidebar-primary: theme("colors.sidebar.primary");
+    --sidebar-primary-foreground: theme("colors.sidebar.primary-foreground");
+    --sidebar-accent: theme("colors.sidebar.accent");
+    --sidebar-accent-foreground: theme("colors.sidebar.accent-foreground");
+    --sidebar-border: theme("colors.sidebar.border");
+    --sidebar-ring: theme("colors.sidebar.ring");
+  }
 }
