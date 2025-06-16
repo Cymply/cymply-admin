@@ -1,5 +1,5 @@
 import { Button } from "../components/ui/button";
-import UserInfo from "@/app/admin/user/user-info";
+// import UserInfo from "@/app/admin/user/user-info";
 
 export default function Home() {
   return (
