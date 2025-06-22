@@ -5,16 +5,14 @@ import { atom, useAtom } from 'jotai'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
-
-// Jotai atom for managing gender selection state
-export const genderAtom = atom<'male' | 'female' | null>(null)
+import {genderAtom} from "@/store/signupStore";
+import useSelectSex from "@/entities/signup/hooks/useSelectSex";
 
 export default function SelectSex() {
-  const [selectedGender, setSelectedGender] = useAtom(genderAtom)
-  
-  const handleGenderSelect = (value: 'male' | 'female') => {
-    setSelectedGender(value)
-  }
+  const {
+    selectedGender,
+    handleGenderSelect,
+  } = useSelectSex();
   
   return (
     <div className="space-y-4">

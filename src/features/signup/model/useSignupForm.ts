@@ -1,25 +1,32 @@
-import {useNickname} from "@/entities/signup/hooks/useSetNickname";
 import {usePathname, useRouter} from "next/navigation";
+import {useAtomValue} from "jotai";
+import {birthdayAtom, genderAtom} from "@/store/signupStore";
+import useNickname from "@/entities/signup/hooks/useNickname";
 
 export default function useSignupForm() {
   const { nickname, canProceed, validation } = useNickname();
+  const selectedGender = useAtomValue(genderAtom);
+  const birthday = useAtomValue(birthdayAtom)
+  
+  
+  
   const pathname = usePathname();
   const router = useRouter();
   
   // 현재 경로 확인
   const isSignupNickname = pathname.includes('/signup/nickname');
   
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleNext = () => {
+    router.push('/signup/nickname');
+  }
+  
+  const handleSubmit = async () => {
+    console.log("selectedGender", selectedGender)
+    console.log("birthday", birthday)
+    console.log("nickname", nickname)
     
-    // if (!canProceed) {
-    //   alert('닉네임을 올바르게 입력해주세요.')
-    //   return
-    // }
     
-
     try {
-      if (isSignupNickname) {
         // TODO: 실제 회원가입 API 호출
         console.log('회원가입 진행:', { nickname })
         
@@ -44,9 +51,6 @@ export default function useSignupForm() {
           alert(errorData.message || '회원가입 중 오류가 발생했습니다.')
         }
         */
-      } else {
-        router.push('/signup/nickname');
-      }
     } catch (error) {
       console.error('회원가입 오류:', error)
       alert('네트워크 오류가 발생했습니다.')
@@ -57,6 +61,7 @@ export default function useSignupForm() {
     nickname, canProceed,
     validation,
     handleSubmit,
+    handleNext,
     isSignupNickname,
   }
 }
