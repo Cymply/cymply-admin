@@ -13,4 +13,4 @@ export const authApi = {
   
   getMe: () =>
     api.get<User>('/auth/me'),
-};
+}
