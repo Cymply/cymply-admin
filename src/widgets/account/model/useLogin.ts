@@ -1,8 +1,7 @@
-import {useState} from "react";
-import {useAuth} from "@/features/model/AuthContext";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import {api} from "@/shared/api";
+import {AuthService} from "@/shared/lib/auth";
 
 export default function useLogin() {
   const [email, setEmail] = useState('');
@@ -10,39 +9,39 @@ export default function useLogin() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login } = useAuth();
   const router = useRouter();
   
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // setLoading(true);
+    // setError('');
+    //
+    // try {
+    //   await login(email, password);
+    //   router.push('/dashboard');
+    // } catch (err) {
+    //   setError('로그인에 실패했습니다.');
+    // } finally {
+    //   setLoading(false);
+    // }
+  };
+  
+  const handleKakaoLogin = () => {
     setLoading(true);
     setError('');
     
-    try {
-      await login(email, password);
-      router.push('/dashboard');
-    } catch (err) {
-      setError('로그인에 실패했습니다.');
-    } finally {
-      setLoading(false);
-    }
+    // 로딩 상태를 localStorage에 저장 (페이지 이동 후에도 유지)
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=6384e2942c8c3b16be31510c15d29d67&redirect_uri=http://localhost:3000/login/redirect&response_type=code`;
   };
-  
-  const handleKakaoLogin = async () => {
-    try {
+
+// 컴포넌트 마운트 시 로딩 상태 복원
+  useEffect(() => {
+    const isKakaoLoading = localStorage.getItem('kakaoLoginLoading');
+    if (isKakaoLoading === 'true') {
       setLoading(true);
-      setError('');
-      window.location.href = 'http://34.64.182.180:8080/oauth2/authorization/kakao';
-      
-      console.log('카카오 로그인 시작');
-      // 임시로 콘솔 로그만 출력
-      
-    } catch (err) {
-      setError('카카오 로그인에 실패했습니다.');
-    } finally {
-      setLoading(false);
+      localStorage.removeItem('kakaoLoginLoading');
     }
-  };
+  }, []);
   
   return {
     email, setEmail,
