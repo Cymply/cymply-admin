@@ -2,6 +2,8 @@ import {usePathname, useRouter} from "next/navigation";
 import {useAtomValue} from "jotai";
 import {birthdayAtom, genderAtom} from "@/store/signupStore";
 import useNickname from "@/entities/signup/hooks/useNickname";
+import {authApi} from "@/features/auth/api";
+import moment from "moment";
 
 export default function useSignupForm() {
   const { nickname, canProceed, validation } = useNickname();
@@ -22,35 +24,18 @@ export default function useSignupForm() {
   
   const handleSubmit = async () => {
     console.log("selectedGender", selectedGender)
-    console.log("birthday", birthday)
+    console.log("birthday", moment(birthday, "YYYYMMDD").format("YYYY-MM-DD"))
     console.log("nickname", nickname)
     
     
     try {
-        // TODO: 실제 회원가입 API 호출
-        console.log('회원가입 진행:', { nickname })
-        
-        // 예시: API 호출
-        /*
-        const response = await fetch('/api/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            nickname,
-            // 다른 회원가입 정보들...
-          }),
+        // TODO: 카카오나 구글 회원 가입 후 닉네임 입력까지 마치고 최종 회원가입 버튼 눌러서 API 호출할 곳
+        const res = await authApi.signup({
+          nickname:nickname,
+          name : nickname,
+          gender : selectedGender,
+          birth : moment(birthday, "YYYYMMDD").format("YYYY-MM-DD")
         })
-        
-        if (response.ok) {
-          // 성공 처리
-          router.push('/welcome')
-        } else {
-          const errorData = await response.json()
-          alert(errorData.message || '회원가입 중 오류가 발생했습니다.')
-        }
-        */
     } catch (error) {
       console.error('회원가입 오류:', error)
       alert('네트워크 오류가 발생했습니다.')

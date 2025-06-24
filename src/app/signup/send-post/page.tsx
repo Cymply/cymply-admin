@@ -1,3 +1,5 @@
+
+// 개발하지 않았지만, signup 후 편지보내기 화면 모습입니다.
 export default function SignupSendPost() {
   return (
     <div className="w-[750px] h-[1624px] relative bg-white overflow-hidden">

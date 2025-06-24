@@ -26,4 +26,4 @@ export const canProceedAtom = atom((get) => {
 
 export const birthdayAtom = atom<string>('')
 
-export const genderAtom = atom<'male' | 'female' | null>(null)
+export const genderAtom = atom<'M' | 'F' | null>(null)

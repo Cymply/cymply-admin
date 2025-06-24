@@ -76,12 +76,12 @@ export default function Signup() {
                 className="flex gap-6"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="male" id="male" />
-                  <Label htmlFor="male">남성</Label>
+                  <RadioGroupItem value="M" id="male" />
+                  <Label htmlFor="M">남성</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="female" id="female" />
-                  <Label htmlFor="female">여성</Label>
+                  <RadioGroupItem value="F" id="female" />
+                  <Label htmlFor="F">여성</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="other" id="other" />
