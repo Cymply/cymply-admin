@@ -1,4 +1,5 @@
 //src/app/signup/profile/page.tsx
+"use client"
 
 import SignupView from "@/widgets/signup/ui/SignupView";
 import SignupHeader from "@/features/signup/ui/SignupHeader";

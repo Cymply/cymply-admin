@@ -19,7 +19,7 @@ export class AuthService {
   // 백엔드 로그인 처리 (카카오 콜백 후)
   static async login(code: string): Promise<LoginResponse> {
     try {
-      const response = await apiClient.post('/oauth2/authorization/kakao', {
+      const response = await apiClient.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/oauth2/authorization/kakao`, {
         code: code
       });
       
